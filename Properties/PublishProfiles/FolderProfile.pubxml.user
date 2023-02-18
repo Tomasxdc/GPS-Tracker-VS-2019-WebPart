@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\garen\OneDrive\Dokumenty\maturitaive\gpsapka\gpsapka\bin\Release\net6.0\publish\</_PublishTargetUrl>
+    <History>True|2022-12-02T12:37:09.5275528Z;True|2022-12-02T13:23:32.6517320+01:00;False|2022-12-02T13:23:06.3120749+01:00;False|2022-12-02T13:22:47.2644060+01:00;True|2022-11-04T13:25:07.4800659+01:00;True|2022-11-04T12:54:14.3940156+01:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>
