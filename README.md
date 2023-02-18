@@ -1,5 +1,5 @@
 GPS-Tracker-VS2019-WebPart
-GPS Tracker - Visual Studio 2019
+
 #
 You need to download and setup MySQL database link: https://www.mysql.com/ 
 You need ASP.NET Core, database extension in your visual studio 2019
