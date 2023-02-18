@@ -20,4 +20,4 @@ What i used
 1) MySQL database
 2) MVC architecture
 3) Entity framework
-4)Web API with ASP.NET Core
+4) Web API with ASP.NET Core
