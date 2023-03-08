@@ -1,0 +1,126 @@
+﻿@using gpsapka.Models;
+@model indexModel
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+      <title>GPS App</title>
+
+    <script src="https://api.mapy.cz/loader.js"></script>
+    <script>Loader.load()</script>
+
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+      <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+      </style>
+
+
+
+<script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>
+    <div id="mapa" style="width:100%; height:400px;"></div>
+
+
+    <script type="text/javascript">
+
+        var center = SMap.Coords.fromWGS84(0, 0);  //nastaveny souradnice                       
+        var mapa = new SMap(JAK.gel("mapa"), center, 5);               //priblizeni po nacteni  
+        mapa.addDefaultLayer(SMap.DEF_BASE).enable();
+        mapa.addDefaultControls();
+
+        var layer = new SMap.Layer.Marker();  //vytvoreni layeru pro znacky
+        mapa.addLayer(layer);
+        layer.enable();
+
+        var options = {};
+        var marker = new SMap.Marker(center, "myMarker", options);   //vytvoreni markeru
+        layer.addMarker(marker);
+
+        function showMarker(lng, lat) {
+             var coords = SMap.Coords.fromWGS84(lng, lat);  //prevod souradnic
+             marker.setCoords(coords);  //presunuti markeru
+             mapa.setCenter(coords);  //centrovani mapy na marker
+        }
+    </script>
+
+
+</head>
+  <body>
+
+    <div class="container-fluid">
+        <div class="container-fluid">
+
+        </div>
+        <div class="container-fluid">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">čas</th>
+                        <th scope="col">lat</th>
+                        <th scope="col">lng</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (Poloha pol in Model.polohas) //vypsání záznamů
+                        {
+                            <tr>
+                            <th scope="row">@pol.cas</th>
+                            <td>@pol.lat</td>
+                            <td>@pol.lng</td>
+                                <td><a class="btn btn-primary" href="#" onclick="showMarker(
+                                @{       
+                                    string leng = Convert.ToString(pol.lng);
+                                     leng = leng.Replace(",", ".");
+                                     WriteLiteral(leng);
+                            }, 
+                                @{           
+                                string latent = Convert.ToString(pol.lat);
+                                latent = latent.Replace(",", ".");
+                                WriteLiteral(latent);}
+                                    )">show</a></td>
+                            </tr>
+                        }
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+        <div class="container-fluid">
+            @{ //stránkování
+                var prevDisabled = !Model.polohas.HasPreviousPage ? "disabled" : "";
+                var nextDisabled = !Model.polohas.HasNextPage ? "disabled" : "";
+            }
+            
+            <a class="btn btn-outline-secondary @prevDisabled" href="#=@Model.selected&pageNumber=@{
+                WriteLiteral(Model.polohas.PageIndex-1);
+}">
+                previous
+            </a>
+            <a class="btn btn-outline-secondary @nextDisabled" href="#=@Model.selected&pageNumber=@{
+                WriteLiteral(Model.polohas.PageIndex+1);
+}">
+                next
+            </a>
+        </div>
+    </div>
+  </body>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+
+
+
+
+</html>
