@@ -2,5 +2,5 @@
 GPS Tracker - Visual Studio 2019
 Vytvořil jsem 2 verze index
 
-index - využívá Mapy.cz
-index kopie - využívá Google Maps
+index mimo view - využívá Mapy.cz
+index v view - využívá Google Maps
