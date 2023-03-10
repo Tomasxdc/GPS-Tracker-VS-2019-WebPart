@@ -102,12 +102,12 @@
                 var nextDisabled = !Model.polohas.HasNextPage ? "disabled" : "";
             }
             
-            <a class="btn btn-outline-secondary @prevDisabled" href="#=@Model.selected&pageNumber=@{
+            <a class="btn btn-outline-secondary @prevDisabled" href="/Index?recordId=@Model.selected&pageNumber=@{
                 WriteLiteral(Model.polohas.PageIndex-1);
 }">
                 previous
             </a>
-            <a class="btn btn-outline-secondary @nextDisabled" href="#=@Model.selected&pageNumber=@{
+            <a class="btn btn-outline-secondary @nextDisabled" href="/Index?recordId=@Model.selected&pageNumber=@{
                 WriteLiteral(Model.polohas.PageIndex+1);
 }">
                 next
